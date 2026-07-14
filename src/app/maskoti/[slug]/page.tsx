@@ -8,11 +8,6 @@ import { MascotCard } from '@/components/MascotCard'
 import { InquiryForm } from '@/components/InquiryForm'
 import { formatPrice } from '@/lib/utils'
 
-export async function generateStaticParams() {
-  const mascots = await getMascots()
-  return mascots.map((m) => ({ slug: m.slug }))
-}
-
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const mascot = await getMascotBySlug(params.slug)
   if (!mascot) return {}
