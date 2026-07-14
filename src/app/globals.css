@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-ink font-body antialiased;
+}
+
+h1, h2, h3, h4, .font-display {
+  @apply font-display;
+}
+
+::selection {
+  @apply bg-sunshine-300 text-ink;
+}
+
+:focus-visible {
+  outline: 3px solid #0FA3AD;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.wave-divider {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.container-app {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-leaf-500 px-7 py-3.5 font-display text-base font-bold text-white shadow-button transition-transform hover:-translate-y-0.5 hover:bg-leaf-600 active:translate-y-0;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-coral-500 px-7 py-3.5 font-display text-base font-bold text-white shadow-button transition-transform hover:-translate-y-0.5 hover:bg-coral-600 active:translate-y-0;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-teal-500 px-7 py-3 font-display text-base font-bold text-teal-700 transition-colors hover:bg-teal-50;
+}
+
+.card-surface {
+  @apply rounded-3xl bg-white shadow-card;
+}
