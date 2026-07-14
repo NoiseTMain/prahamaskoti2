@@ -35,8 +35,7 @@ export function createClient() {
 
 /** Klient s service_role klíčem — POUZE pro serverové operace mimo request kontext (API routy, cron). */
 export function createServiceRoleClient() {
-  const { createClient: createSupabaseClient } = require('@supabase/supabase-js')
-  return createSupabaseClient<Database>(
+  return createSupabaseJsClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
     { auth: { autoRefreshToken: false, persistSession: false } }
