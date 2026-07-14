@@ -46,7 +46,6 @@ async function sendAdminNotification(inquiry: Inquiry, mascotName?: string | nul
   return resend.emails.send({
     from: FROM_ADDRESS,
     to: ADMIN_ADDRESS,
-    replyTo: inquiry.email,
     subject: `Nová poptávka: ${inquiry.name}${mascotName ? ` — ${mascotName}` : ''}`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 560px; margin: 0 auto;">
