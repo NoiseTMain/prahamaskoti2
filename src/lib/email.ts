@@ -2,12 +2,19 @@ import { Resend } from 'resend'
 import type { Inquiry } from '@/types/database'
 import { formatDate, serviceTypeLabel } from './utils'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const FROM_ADDRESS = process.env.EMAIL_FROM ?? 'Maskoti Praha <poptavky@maskotipraha.cz>'
 const ADMIN_ADDRESS = process.env.EMAIL_ADMIN ?? 'info@maskotipraha.cz'
 
+
 export async function sendInquiryEmails(inquiry: Inquiry, mascotName?: string | null) {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('RESEND_API_KEY není nastaven — e-maily se neodešlou.')
+    return { success: false }
+  }
+  const resend = new Resend(process.env.RESEND_API_KEY)
+
+  const results = await Promise.allSettled([
+
   const results = await Promise.allSettled([
     sendCustomerConfirmation(inquiry, mascotName),
     sendAdminNotification(inquiry, mascotName),
