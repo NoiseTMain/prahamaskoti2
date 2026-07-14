@@ -15,8 +15,9 @@ body {
 }
 
 h1, h2, h3, h4, .font-display {
-  @apply font-display;
+  font-family: var(--font-baloo), system-ui, sans-serif;
 }
+
 
 ::selection {
   @apply bg-sunshine-300 text-ink;
